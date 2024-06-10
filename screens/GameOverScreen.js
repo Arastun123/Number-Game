@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View } from "react-native";
+import InstructionText from "../components/ui/InstructionText";
 
 function GameOverScreen({userNumber}) {
     return (
         <View style={styles.container}>
-            <Text>Game Over!</Text>
-            <Text>Your guess number is {userNumber}</Text>
+            <InstructionText>Game Over!</InstructionText>
+            <InstructionText>Your guess number is {userNumber}</InstructionText>
         </View>
     )
 }
