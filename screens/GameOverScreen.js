@@ -1,11 +1,21 @@
-import { StyleSheet, Text, View } from "react-native";
-import InstructionText from "../components/ui/InstructionText";
+import { StyleSheet, View, Image, Text } from "react-native";
 
-function GameOverScreen({userNumber}) {
+import Title from "../components/ui/Title";
+import Colors from "../constants/Color";
+import PrimaryButton from "../components/ui/PrimaryButton";
+
+function GameOverScreen({ roundsNumber, userNumber, onStartNewGame }) {
     return (
-        <View style={styles.container}>
-            <InstructionText>Game Over!</InstructionText>
-            <InstructionText>Your guess number is {userNumber}</InstructionText>
+        <View style={styles.rootContainer}>
+            <Title>Game Over!</Title>
+            <View style={styles.imageContainer}>
+                <Image source={require('../assets/images/success.png')} style={styles.image} />
+            </View>
+            <Text style={styles.summrayText}>
+                Your phone needed <Text style={styles.highlight}>{roundsNumber}</Text> rounds to guess the number 
+                <Text style={styles.highlight}> {userNumber}</Text> .
+            </Text>
+            <PrimaryButton onPress={onStartNewGame}>Start new Game</PrimaryButton>
         </View>
     )
 }
@@ -14,8 +24,32 @@ function GameOverScreen({userNumber}) {
 export default GameOverScreen;
 
 const styles = StyleSheet.create({
-    container:{
+    rootContainer: {
         marginTop: 100,
-        padding: 10,
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 36,
+    },
+    imageContainer: {
+        width: 300,
+        height: 300,
+        borderRadius: 150,
+        borderWidth: 3,
+        borderColor: Colors.primary800,
+        overflow: 'hidden',
+        margin: 36,
+    },
+    image: {
+        with: '100%',
+        height: '100%'
+    },
+    summrayText: {
+        fontWeight: 'bold',
+        fontSize: 24,
+        marginBottom: 24,
+    },
+    highlight: {
+        color: Colors.primary500,
     }
 })
