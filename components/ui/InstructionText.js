@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from "react-native";
-import Colors from "../../constants/Color";
+import Colors from "../../constants/colors";
 
 function InstructionText({children, style}) {
     return (

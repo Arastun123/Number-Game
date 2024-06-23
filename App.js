@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { ImageBackground, StyleSheet, SafeAreaView } from 'react-native';
 import { useFonts } from 'expo-font'
 import { LinearGradient } from 'expo-linear-gradient';
-
+import { StatusBar } from 'expo-status-bar';
 import StartGameScreen from './screens/StartGameScreen';
 import GameScreen from './screens/GameScreen';
-import Colors from './constants/Color';
+import Colors from './constants/colors';
 import GameOverScreen from './screens/GameOverScreen';
 
 export default function App() {
@@ -20,7 +20,6 @@ export default function App() {
   });
 
   if (!fontsLoaded) { return null }
-
 
   function pickedNumberHandler(pickedNumber) {
     setUserNumber(pickedNumber);
@@ -53,21 +52,24 @@ export default function App() {
     />
   }
 
-  
+
 
   return (
-    <LinearGradient style={styles.rootScreen} colors={[Colors.primary700, Colors.accent500]}>
-      <ImageBackground
-        source={require('./assets/images/background.png')}
-        resizeMode='cover'
-        style={styles.rootScreen}
-        imageStyle={styles.backgroundImage}
-      >
-        <SafeAreaView style={styles.rootScreen}>
-          {screen}
-        </SafeAreaView>
-      </ImageBackground>
-    </LinearGradient>
+    <>
+      <StatusBar style='light'/>
+      <LinearGradient style={styles.rootScreen} colors={[Colors.primary700, Colors.accent500]}>
+        <ImageBackground
+          source={require('./assets/images/background.png')}
+          resizeMode='cover'
+          style={styles.rootScreen}
+          imageStyle={styles.backgroundImage}
+        >
+          <SafeAreaView style={styles.rootScreen}>
+            {screen}
+          </SafeAreaView>
+        </ImageBackground>
+      </LinearGradient>
+    </>
   );
 }
 
